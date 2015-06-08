@@ -1,0 +1,5 @@
+{
+    "namespace": "yournamespacehere",
+	"policy_name": "yourpolicynamehere",
+    "policy_secret":"yourpolicysecrethere"
+}
