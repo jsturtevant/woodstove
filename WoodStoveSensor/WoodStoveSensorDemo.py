@@ -11,6 +11,7 @@ sbs = ServiceBusService(api_key["namespace"],
 
 
 for i in range(100):
-    test = sbs.send_event('woodstove2', '{ "DeviceId":"dev-01", "Temperature":"'+ str(i) +'" }')
+    temp = {'DeviceId': 'dev-01', 'Temperature': str(i)}
+    sbs.send_event('woodstove2', json.dumps(temp))
     time.sleep(1)
     print(i)
