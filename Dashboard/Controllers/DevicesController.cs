@@ -81,7 +81,7 @@ namespace Dashboard.Controllers
             }
 
             var userDevices = this.GetUserDevices();
-            Device device = userDevices.FirstOrDefault(x => x.Id == id);
+            Device device = await userDevices.FirstOrDefaultAsync(x => x.Id == id);
             if (device == null)
             {
                 return HttpNotFound();
@@ -99,7 +99,7 @@ namespace Dashboard.Controllers
             if (ModelState.IsValid)
             {
                 var userDevices = this.GetUserDevices();
-                Device databaseDevice = userDevices.FirstOrDefault(x => x.Id == device.Id);
+                Device databaseDevice = await userDevices.FirstOrDefaultAsync(x => x.Id == device.Id);
                 if (databaseDevice != null)
                 {
                     databaseDevice.Name = device.Name;
@@ -121,7 +121,7 @@ namespace Dashboard.Controllers
             }
 
             var userDevices = this.GetUserDevices();
-            Device device = userDevices.FirstOrDefault(x => x.Id == id);
+            Device device = await userDevices.FirstOrDefaultAsync(x => x.Id == id);
             if (device == null)
             {
                 return HttpNotFound();
