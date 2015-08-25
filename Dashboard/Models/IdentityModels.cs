@@ -3,6 +3,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+using WoodStove.Core;
 
 namespace Dashboard.Models
 {
@@ -16,6 +18,8 @@ namespace Dashboard.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public virtual ICollection<Device> Devices { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +33,7 @@ namespace Dashboard.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<WoodStove.Core.Device> Devices { get; set; }
     }
 }
