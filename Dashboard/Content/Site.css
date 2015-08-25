@@ -1,4 +1,19 @@
-﻿body {
+﻿html.landing {
+  background: url('fire.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+html.landing body {
+  color: whitesmoke;
+  background-color: transparent;
+}
+html.landing footer {
+  position: absolute;
+  bottom: 0;
+}
+body {
   padding-top: 50px;
   padding-bottom: 20px;
 }
