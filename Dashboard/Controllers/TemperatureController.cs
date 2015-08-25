@@ -6,16 +6,10 @@ using System.Web.Mvc;
 
 namespace Dashboard.Controllers
 {
-    public class HomeController : Controller
+    public class TemperatureController : Controller
     {
+        // GET: Temperature
         public ActionResult Index()
-        {
-            return View();
-        }
-
-
-
-        public ActionResult Contact()
         {
             return View();
         }

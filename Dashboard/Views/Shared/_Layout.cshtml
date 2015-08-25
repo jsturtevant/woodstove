@@ -32,7 +32,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Devices", "Index", "Devices")</li>
-                    <li>@Html.ActionLink("Temprature", "About", "Home")</li>
+                    <li>@Html.ActionLink("Temprature", "Index", "Temperature")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -43,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - WoodStove Monitor</p>
         </footer>
     </div>
 
