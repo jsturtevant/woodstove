@@ -46,10 +46,10 @@
                 {
                     MetricEvent newData = this.DeserializeEventData(eventData);
                   
-                    Console.WriteLine(string.Format("Message received.  Partition: '{0}', Device: '{1}', Data: '{2}'",
-                        this.partitionContext.Lease.PartitionId, newData.DeviceId, newData.Temperature));
+                    Console.WriteLine(string.Format("Message received.  Partition: '{0}', Device: '{1}', Data: '{2}', SecondaryData: '{3}'",
+                        this.partitionContext.Lease.PartitionId, newData.DeviceId, newData.Temperature, newData.RoomTemperature));
 
-                    signalrTemprature.SendMessage(new DeviceReading(newData.DeviceId, newData.Temperature,eventData.EnqueuedTimeUtc));
+                    signalrTemprature.SendMessage(new DeviceReading(newData.DeviceId, newData.Temperature, newData.RoomTemperature,eventData.EnqueuedTimeUtc));
 
                     // tell event hubs which event you processed last (save game)
                     await context.CheckpointAsync(eventData);
@@ -82,6 +82,7 @@
     public class MetricEvent
     {
         public string DeviceId { get; set; }
+        public int RoomTemperature { get;  set; }
         public int Temperature { get; set; }
     }
 }

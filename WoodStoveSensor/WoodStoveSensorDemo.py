@@ -12,23 +12,25 @@ sbs = ServiceBusService(api_key["namespace"],
 
 
 for i in range(100):
+    roomtemp = random.randint(60, 70)
+
     dev1 = random.randint(1, 10)
-    temp = {'DeviceId': 'device-1', 'Temperature': str(dev1)}
+    temp = {'DeviceId': 'device-1', 'Temperature': str(dev1), 'RoomTemperature': str(roomtemp)}
     sbs.send_event('woodstove2', json.dumps(temp))
     print(json.dumps(temp))
 
     dev2 = random.randint(20, 30)
-    temp = {'DeviceId': 'device-2', 'Temperature': str(dev2)}
+    temp = {'DeviceId': 'device-2', 'Temperature': str(dev2), 'RoomTemperature': str(roomtemp)}
     sbs.send_event('woodstove2', json.dumps(temp))
     print(json.dumps(temp))
 
     dev3 = random.randint(30, 40)
-    temp = {'DeviceId': 'device-3', 'Temperature': str(dev3)}
+    temp = {'DeviceId': 'device-3', 'Temperature': str(dev3), 'RoomTemperature': str(roomtemp)}
     sbs.send_event('woodstove2', json.dumps(temp))
     print(json.dumps(temp))
 
     dev4 = random.randint(40, 50)
-    temp = {'DeviceId': 'device-4', 'Temperature': str(dev4)}
+    temp = {'DeviceId': 'device-4', 'Temperature': str(dev4), 'RoomTemperature': str(roomtemp)}
     sbs.send_event('woodstove2', json.dumps(temp))
     print(json.dumps(temp))
 

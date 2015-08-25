@@ -15,13 +15,15 @@ namespace WoodStove.Core
         private DateTime timeStamp;
 
         private int value;
+        private int secondaryValue;
 
         private string deviceId;
 
-        public DeviceReading(string deviceId, int value, DateTime timeStamp)
+        public DeviceReading(string deviceId, int value, int secondaryValue, DateTime timeStamp)
         {
             this.deviceId = deviceId;
             this.value = value;
+            this.secondaryValue = secondaryValue;
             this.timeStamp = timeStamp;
         }
 
@@ -42,6 +44,14 @@ namespace WoodStove.Core
             }
         }
 
+        public int SecondaryValue
+        {
+            get
+            {
+                return this.secondaryValue;
+            }
+        }
+
         public DateTime TimeStamp
         {
             get
@@ -56,9 +66,9 @@ namespace WoodStove.Core
                                     this.DeviceId, this.Value, this.TimeStamp);
         }
 
-        public static DeviceReading Create(string deviceId, int value)
+        public static DeviceReading Create(string deviceId,int secondaryValue, int value)
         {
-            return new DeviceReading(deviceId, value, DateTime.Now);
+            return new DeviceReading(deviceId, value, secondaryValue, DateTime.Now);
         }
     }
 }

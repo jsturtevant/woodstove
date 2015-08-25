@@ -20,6 +20,9 @@
                     <span class="temp">
 
                     </span>
+                    <span class="roomtemp">
+
+                    </span>
                     <br />
 
                     <canvas class="graph" width="400" height="100"></canvas>
@@ -72,6 +75,7 @@
                 deviceToUpdate.device.find(".temprature-display").removeClass('hide');
 
                 deviceToUpdate.device.find(".temp").html(temp.Value);
+                deviceToUpdate.device.find(".roomtemp").html(temp.SecondaryValue);
                 deviceToUpdate.line.append(new Date().getTime(), temp.Value);
             };
             
