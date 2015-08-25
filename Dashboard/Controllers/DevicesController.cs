@@ -91,6 +91,7 @@ namespace Dashboard.Controllers
             dvm.Id = device.Id;
             dvm.Name = device.Name;
             dvm.NewId = device.Id;
+            dvm.ZipCode = device.ZipCode;
             return View(dvm);
         }
 
@@ -99,7 +100,7 @@ namespace Dashboard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,NewId,Name")] DeviceViewModel device)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,NewId,Name,ZipCode")] DeviceViewModel device)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +115,8 @@ namespace Dashboard.Controllers
                         var newdevice = new Device()
                         {
                             Id = device.NewId,
-                            Name = device.Name
+                            Name = device.Name,
+                            ZipCode = device.ZipCode
                         };
 
                         var userId = User.Identity.GetUserId();
@@ -125,6 +127,7 @@ namespace Dashboard.Controllers
                     else
                     {
                         databaseDevice.Name = device.Name;
+                        databaseDevice.ZipCode = device.ZipCode;
                         await db.SaveChangesAsync();
                     }
 

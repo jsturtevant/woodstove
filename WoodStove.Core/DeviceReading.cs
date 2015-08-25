@@ -60,6 +60,8 @@ namespace WoodStove.Core
             }
         }
 
+        public float TemperatureOutside { get; set; }
+
         public override string ToString()
         {
             return string.Format("Device {0} has Temp {1} at {2}",

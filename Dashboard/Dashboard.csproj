@@ -51,6 +51,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Forecast.io.45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Forecast.io.1.0.8\lib\net45\Forecast.io.45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GoogleMaps.LocationServices, Version=0.1.5219.29552, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMaps.LocationServices.0.9.8.5\lib\net40\GoogleMaps.LocationServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ApplicationInsights">
       <HintPath>..\packages\Microsoft.ApplicationInsights.0.17.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
@@ -205,6 +213,10 @@
     <Compile Include="Migrations\201508251425490_Add device.Designer.cs">
       <DependentUpon>201508251425490_Add device.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508252029375_zipcode.cs" />
+    <Compile Include="Migrations\201508252029375_zipcode.Designer.cs">
+      <DependentUpon>201508252029375_zipcode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DevicesViewModel.cs" />
@@ -232,6 +244,7 @@
     <Content Include="Global.asax" />
     <None Include="compilerconfig.json" />
     <None Include="Content\Site.less" />
+    <Content Include="GoogleMaps.LocationServices.readme.txt" />
     <Content Include="Scripts\ai.0.15.0-build12287.js" />
     <Content Include="Scripts\ai.0.15.0-build12287.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -348,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508251425490_Add device.resx">
       <DependentUpon>201508251425490_Add device.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508252029375_zipcode.resx">
+      <DependentUpon>201508252029375_zipcode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
