@@ -26,13 +26,13 @@ textarea {
   margin-top: 10px;
 }
 .device {
-  border: medium solid green;
+  border: medium solid darkcyan;
   min-height: 225px;
 }
 .device h1 {
-  background-color: rebeccapurple;
+  background-color: darkcyan;
   margin: 0;
-  padding: 5px;
+  padding: 10px;
 }
 .device i.fa {
   font-size: 44px;
