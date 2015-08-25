@@ -48,13 +48,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E68D91A114B35CB135973A18B18CCEB1CE32A0C3</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>9FCD41649A02BA82D7973FDCD30E7DD91C5AF11D</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>WebJob1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>RealtimeProcessor_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
@@ -127,7 +127,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\woodstovedashboard.pubxml" />
     <None Include="Properties\webjob-publish-settings.json" />
-    <None Include="WebJob1_TemporaryKey.pfx" />
+    <None Include="RealtimeProcessor_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WoodStove.Core\WoodStove.Core.csproj">
