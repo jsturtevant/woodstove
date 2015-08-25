@@ -1,15 +1,31 @@
-﻿
+﻿@model Dashboard.Models.DevicesViewModel
+
 @{
     ViewBag.Title = "Temprature";
 }
 
-<div class="row">
-    <div class="col-sm-4 text-center">
-        <h1 class="">Current Temp</h1>
-        <span id="temp">0</span>
+<div class="devices row">
+    @foreach (var device in @Model.Devices)
+    {
+        <div class="col col-sm-4 text-center">
+            <div class="device">
+                <h1 class="">@device.Name</h1>
+                <div class="loading">
+                    Loading<br />
+                    <i class="fa fa-cog fa-spin"></i>
+                </div>
+             
 
-        <canvas id="mycanvas" width="400" height="100"></canvas>
-    </div>
+                <div class="temprature-display">
+                    <span id="temp">
+
+                    </span>
+
+                    <canvas class="hide" id="mycanvas" width="400" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
 @section scripts
