@@ -19,7 +19,7 @@ select,
 textarea {
   max-width: 280px;
 }
-#temp {
+.temp {
   font-size: 75px;
 }
 .devices .col {
@@ -27,7 +27,7 @@ textarea {
 }
 .device {
   border: medium solid darkcyan;
-  min-height: 225px;
+  min-height: 275px;
 }
 .device h1 {
   background-color: darkcyan;
