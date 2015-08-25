@@ -7,8 +7,8 @@
 <div class="devices row">
     @foreach (var device in @Model.Devices)
     {
-        <div class="col col-sm-4 text-center">
-            <div class="device">
+        <div class="col col-md-6 text-center">
+            <div class="device" data-device-id="@device.Id">
                 <h1 class="">@device.Name</h1>
                 <div class="loading">
                     Loading<br />
@@ -16,12 +16,13 @@
                 </div>
              
 
-                <div class="temprature-display">
-                    <span id="temp">
+                <div class="temprature-display hide">
+                    <span class="temp">
 
                     </span>
+                    <br />
 
-                    <canvas class="hide" id="mycanvas" width="400" height="100"></canvas>
+                    <canvas class="graph" width="400" height="100"></canvas>
                 </div>
             </div>
         </div>
@@ -37,21 +38,46 @@
 
     <script>
         $(function () {
-            var smoothie = new SmoothieChart();
-            smoothie.streamTo(document.getElementById("mycanvas"));
-            var line1 = new TimeSeries();
-            smoothie.addTimeSeries(line1);
 
             // Declare a proxy to reference the hub.
             var tempHub = $.connection.tempHub;
-            var currentDevice;
+            var devices = new Array();
+
+            $.connection.hub.start().done(function () {
+                $('.device').each(function () {
+
+                    var $device = $(this);
+                    var deviceId = $device.data('device-id');
+
+                    tempHub.server.subscribeToDevice(deviceId);
+
+                    var smoothie = new SmoothieChart();
+                    smoothie.streamTo($device.find('.graph')[0]);
+
+                    var line1 = new TimeSeries();
+                    smoothie.addTimeSeries(line1);
+
+                    devices[deviceId] = {
+                        'device': $device,
+                        'line': line1
+                    };
+                });
+            });
 
             tempHub.client.currentTemp = function (temp) {
-                $('#temp').html(temp);
-                line1.append(new Date().getTime(), temp);
-            };
 
-            $.connection.hub.start();
+                var deviceToUpdate = devices[temp.DeviceId];
+
+                deviceToUpdate.device.find(".loading").addClass('hide');
+                deviceToUpdate.device.find(".temprature-display").removeClass('hide');
+
+                deviceToUpdate.device.find(".temp").html(temp.Value);
+                deviceToUpdate.line.append(new Date().getTime(), temp.Value);
+            };
+            
+          
         });
+
+        
     </script>
 }

@@ -1,6 +1,7 @@
-from azure.servicebus import ServiceBusService
+﻿from azure.servicebus import ServiceBusService
 import time
-import json;
+import json
+import random
 
 with open("settings.json") as json_file:
     api_key = json.load(json_file) 
@@ -11,7 +12,25 @@ sbs = ServiceBusService(api_key["namespace"],
 
 
 for i in range(100):
-    temp = {'DeviceId': 'dev-01', 'Temperature': str(i)}
+    dev1 = random.randint(1, 10)
+    temp = {'DeviceId': 'device-1', 'Temperature': str(dev1)}
     sbs.send_event('woodstove2', json.dumps(temp))
+    print(json.dumps(temp))
+
+    dev2 = random.randint(20, 30)
+    temp = {'DeviceId': 'device-2', 'Temperature': str(dev2)}
+    sbs.send_event('woodstove2', json.dumps(temp))
+    print(json.dumps(temp))
+
+    dev3 = random.randint(30, 40)
+    temp = {'DeviceId': 'device-3', 'Temperature': str(dev3)}
+    sbs.send_event('woodstove2', json.dumps(temp))
+    print(json.dumps(temp))
+
+    dev4 = random.randint(40, 50)
+    temp = {'DeviceId': 'device-4', 'Temperature': str(dev4)}
+    sbs.send_event('woodstove2', json.dumps(temp))
+    print(json.dumps(temp))
+
     time.sleep(1)
     print(i)

@@ -10,4 +10,11 @@ namespace Dashboard.Models
     {
         public List<Device> Devices { get; set; }
     }
+
+    public class DeviceViewModel
+    {
+        public string Id { get; set; }
+        public string NewId { get; set; }
+        public string Name { get; set; }
+    }
 }

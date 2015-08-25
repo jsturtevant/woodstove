@@ -86,7 +86,12 @@ namespace Dashboard.Controllers
             {
                 return HttpNotFound();
             }
-            return View(device);
+
+            DeviceViewModel dvm = new DeviceViewModel();
+            dvm.Id = device.Id;
+            dvm.Name = device.Name;
+            dvm.NewId = device.Id;
+            return View(dvm);
         }
 
         // POST: Devices/Edit/5
@@ -94,7 +99,7 @@ namespace Dashboard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] Device device)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,NewId,Name")] DeviceViewModel device)
         {
             if (ModelState.IsValid)
             {
@@ -102,8 +107,28 @@ namespace Dashboard.Controllers
                 Device databaseDevice = await userDevices.FirstOrDefaultAsync(x => x.Id == device.Id);
                 if (databaseDevice != null)
                 {
-                    databaseDevice.Name = device.Name;
-                    await db.SaveChangesAsync();
+                    if (databaseDevice.Id != device.NewId)
+                    {
+                        db.Devices.Remove(databaseDevice);
+
+                        var newdevice = new Device()
+                        {
+                            Id = device.NewId,
+                            Name = device.Name
+                        };
+
+                        var userId = User.Identity.GetUserId();
+                        var currentUser = await db.Users.FirstAsync(u => u.Id == userId);
+                        currentUser.Devices.Add(newdevice);
+                        await db.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        databaseDevice.Name = device.Name;
+                        await db.SaveChangesAsync();
+                    }
+
+
                     return RedirectToAction("Index");
                 }
 
