@@ -57,15 +57,23 @@
 
                     tempHub.server.subscribeToDevice(deviceId);
 
-                    var smoothie = new SmoothieChart();
+                    var smoothie = new SmoothieChart({ maxValue: 100 });
                     smoothie.streamTo($device.find('.graph')[0]);
 
-                    var line1 = new TimeSeries();
-                    smoothie.addTimeSeries(line1);
+                    var deviceTemp = new TimeSeries();
+                    smoothie.addTimeSeries(deviceTemp, { strokeStyle: 'rgb(0, 255, 0)', fillStyle: 'rgba(0, 255, 0, 0.4)', lineWidth: 3 });
+
+                    var roomTemp = new TimeSeries();
+                    smoothie.addTimeSeries(roomTemp,  { strokeStyle:'rgb(255, 0, 255)', fillStyle:'rgba(255, 0, 255, 0.3)', lineWidth:3 });
+
+                    var outsideTemp = new TimeSeries();
+                    smoothie.addTimeSeries(outsideTemp, { strokeStyle:'rgb(0, 255, 255)', fillStyle:'rgba(0, 255, 255, 0.3)', lineWidth:3 });
 
                     devices[deviceId] = {
                         'device': $device,
-                        'line': line1
+                        'deviceTemp': deviceTemp,
+                        'roomTemp': roomTemp,
+                        'outsideTemp': outsideTemp
                     };
                 });
             });
@@ -81,7 +89,13 @@
                 deviceToUpdate.device.find(".roomtemp").html(temp.SecondaryValue);
                 deviceToUpdate.device.find(".outsidetemp").html(temp.TemperatureOutside);
 
-                deviceToUpdate.line.append(new Date().getTime(), temp.Value);
+                var time = new Date().getTime();
+                deviceToUpdate.deviceTemp.append(time, temp.Value);
+                deviceToUpdate.roomTemp.append(time, temp.SecondaryValue);
+                deviceToUpdate.outsideTemp.append(time, temp.TemperatureOutside);
+
+
+
             };
 
 
