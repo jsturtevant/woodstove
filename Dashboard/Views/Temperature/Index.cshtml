@@ -9,29 +9,29 @@
     {
         <div class="col col-md-6 text-center">
             <div class="device" data-device-id="@device.Id">
-                <h1 class="">@device.Name</h1>
-                <div class="loading">
-                    Loading<br />
-                    <i class="fa fa-cog fa-spin"></i>
-                </div>
-             
+                <h1 class="">
+                    @device.Name  <small >OutSide <br /> <span class="outsidetemp"></span></small>
+            </h1>
+            <div class="loading">
+                Loading<br />
+                <i class="fa fa-cog fa-spin"></i>
+            </div>
 
-                <div class="temprature-display hide">
-                    <span class="temp">
 
-                    </span>
-                    <span class="roomtemp">
+            <div class="temprature-display hide">
+                <span class="temp">
 
-                    </span>
-                    <span class="outsidetemp">
+                </span>
+                <span class="roomtemp">
 
-                    </span>
-                    <br />
+                </span>
 
-                    <canvas class="graph" width="400" height="100"></canvas>
-                </div>
+                <br />
+
+                <canvas class="graph" width="400" height="100"></canvas>
             </div>
         </div>
+    </div>
     }
 </div>
 
@@ -80,13 +80,13 @@
                 deviceToUpdate.device.find(".temp").html(temp.Value);
                 deviceToUpdate.device.find(".roomtemp").html(temp.SecondaryValue);
                 deviceToUpdate.device.find(".outsidetemp").html(temp.TemperatureOutside);
-       
+
                 deviceToUpdate.line.append(new Date().getTime(), temp.Value);
             };
-            
-          
+
+
         });
 
-        
+
     </script>
 }

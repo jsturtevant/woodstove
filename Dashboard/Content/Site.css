@@ -48,6 +48,12 @@ textarea {
   background-color: darkcyan;
   margin: 0;
   padding: 10px;
+  text-align: left;
+}
+.device h1 small {
+  position: absolute;
+  right: 30px;
+  color: white;
 }
 .device i.fa {
   font-size: 44px;
