@@ -9,6 +9,11 @@ namespace WoodStove.Core
 {
     public class Device
     {
+        public Device()
+        {
+            Display = true;
+        }
+
         [Required]
         public string Id { get; set; }
         [Required]
@@ -17,5 +22,7 @@ namespace WoodStove.Core
 
         [RegularExpression("^[0-9]{5}$", ErrorMessage = "Invalid Zip")]
         public string ZipCode { get; set; }
+
+        public bool Display { get; set; }
     }
 }

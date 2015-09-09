@@ -1,4 +1,4 @@
-#!/usr/bin/python
+﻿#!/usr/bin/python
 # Copyright (c) 2014 Adafruit Industries
 # Author: Tony DiCola
 #
@@ -57,6 +57,6 @@ while True:
     print ('    Internal Temperature: {0:0.3F}*C / {1:0.3F}*F').format(internal, c_to_f(internal))
     if not math.isnan(temp):
 #        print 'This is not Nan'
-        temp = {'DeviceId': 'dev-01', 'Temperature': str(int(c_to_f(temp)))}
+        temp = {'DeviceId': 'demo-1', 'Temperature': str(int(c_to_f(temp)))}
         sbs.send_event('woodstove2', json.dumps(temp))
     time.sleep(1.0)

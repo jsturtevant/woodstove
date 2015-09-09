@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>65ca93d2-d9f5-46e6-b5cd-f429b0b176e9</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>WoodStoveSensorDemo.py</StartupFile>
+    <StartupFile>Demo.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -29,7 +29,8 @@
     <Compile Include="sensor.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="WoodStoveSensorDemo.py" />
+    <Compile Include="DemoMutlpleSensors.py" />
+    <Compile Include="Demo.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="settings.json" />

@@ -7,8 +7,22 @@
     <div class="col-md-8">
         <h2>Monitor your stove from anywhere.</h2>
         <p>Whether you are in another room or half way accross the world you keep track of the temperate of your stove.  You can compare the tempratures of the stove to inside tempratures and outside tempratures allowing for you to burn more efficeintly and save money.</p>
-        <p>
-            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-default" })
-        </p>
+
+        @if (!Request.IsAuthenticated)
+        {
+            <p>
+                @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-default" })
+            </p>
+            <p>Or</p>
+            <p>
+                @Html.ActionLink("See a Demo", "Demo", "Temperature", routeValues: null, htmlAttributes: new { id = "demo", @class = "btn btn-default" })
+            </p>
+        }
+        else
+        {
+            <p>
+                @Html.ActionLink("See your devices", "Index", "Temperature", routeValues: null, htmlAttributes: new { id = "demo", @class = "btn btn-default" })
+            </p>
+        }
     </div>
 </div>

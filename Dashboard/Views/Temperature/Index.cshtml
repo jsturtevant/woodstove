@@ -7,31 +7,35 @@
 <div class="devices row">
     @foreach (var device in @Model.Devices)
     {
-        <div class="col col-md-6 text-center">
-            <div class="device" data-device-id="@device.Id">
-                <h1 class="">
-                    @device.Name  <small >OutSide <br /> <span class="outsidetemp"></span></small>
-            </h1>
-            <div class="loading">
-                Loading<br />
-                <i class="fa fa-cog fa-spin"></i>
+        if (device.Display)
+        {
+            <div class="col col-md-6 text-center">
+                <div class="device" data-device-id="@device.Id">
+                    <h1 class="">
+                        @device.Name  <small>OutSide <br /> <span class="outsidetemp"></span></small>
+                    </h1>
+                    <div class="loading">
+                        Loading<br />
+                        <i class="fa fa-cog fa-spin"></i>
+                    </div>
+
+
+                    <div class="temprature-display hide">
+                        <span class="temp">
+
+                        </span>
+                        <span class="roomtemp">
+
+                        </span>
+
+                        <br />
+
+                        <canvas class="graph" width="400" height="100"></canvas>
+                    </div>
+                </div>
             </div>
+        }
 
-
-            <div class="temprature-display hide">
-                <span class="temp">
-
-                </span>
-                <span class="roomtemp">
-
-                </span>
-
-                <br />
-
-                <canvas class="graph" width="400" height="100"></canvas>
-            </div>
-        </div>
-    </div>
     }
 </div>
 
@@ -64,10 +68,10 @@
                     smoothie.addTimeSeries(deviceTemp, { strokeStyle: 'rgb(0, 255, 0)', fillStyle: 'rgba(0, 255, 0, 0.4)', lineWidth: 3 });
 
                     var roomTemp = new TimeSeries();
-                    smoothie.addTimeSeries(roomTemp,  { strokeStyle:'rgb(255, 0, 255)', fillStyle:'rgba(255, 0, 255, 0.3)', lineWidth:3 });
+                    smoothie.addTimeSeries(roomTemp, { strokeStyle: 'rgb(255, 0, 255)', fillStyle: 'rgba(255, 0, 255, 0.3)', lineWidth: 3 });
 
                     var outsideTemp = new TimeSeries();
-                    smoothie.addTimeSeries(outsideTemp, { strokeStyle:'rgb(0, 255, 255)', fillStyle:'rgba(0, 255, 255, 0.3)', lineWidth:3 });
+                    smoothie.addTimeSeries(outsideTemp, { strokeStyle: 'rgb(0, 255, 255)', fillStyle: 'rgba(0, 255, 255, 0.3)', lineWidth: 3 });
 
                     devices[deviceId] = {
                         'device': $device,

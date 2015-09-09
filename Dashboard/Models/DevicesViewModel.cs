@@ -23,5 +23,7 @@ namespace Dashboard.Models
 
         [RegularExpression("^[0-9]{5}$", ErrorMessage = "Invalid Zip")]
         public string ZipCode { get; set; }
+
+        public bool Display { get; set; }
     }
 }

@@ -33,6 +33,28 @@ namespace Dashboard.Controllers
             IQueryable<Device> devices = this.db.Users.Include(u => u.Devices).Where(u => u.Id == userId).SelectMany(u => u.Devices);
             return devices;
         }
+
+        // GET: Temperature
+        [AllowAnonymous]
+        public async Task<ActionResult> Demo()
+        {
+            var dvm = new DevicesViewModel();
+
+            var demoDevices = new List<Device>()
+            {
+                new Device()
+                {
+                    Id= "demo-1",
+                    Name= "Demo",
+                    ZipCode="92118",
+                    Display = true
+                }
+            };
+
+            dvm.Devices = demoDevices;
+
+            return View("Index", dvm);
+        }
     }
 
    
