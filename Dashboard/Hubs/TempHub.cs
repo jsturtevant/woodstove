@@ -12,6 +12,14 @@ namespace Dashboard.Hubs
 {
     public class TempHub : Hub
     {
+        private string apikey = "";
+
+
+        public TempHub()
+        {
+           apikey =  System.Configuration.ConfigurationManager.AppSettings["weatherapi"];
+        }
+
         public void Hello()
         {
             Clients.All.currentTemp(0);
@@ -62,7 +70,7 @@ namespace Dashboard.Hubs
 
                 if (latlong != null)
                 {
-                    var request = new ForecastIORequest("", (float)latlong.Latitude, (float)latlong.Longitude, Unit.us);
+                    var request = new ForecastIORequest(apikey, (float)latlong.Latitude, (float)latlong.Longitude, Unit.us);
                     var response = request.Get();
 
                     temp.TemperatureOutside = response.currently.temperature;
